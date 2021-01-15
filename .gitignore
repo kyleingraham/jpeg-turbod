@@ -1,3 +1,13 @@
+# Project output
+bin/
+/jpeg-turbod
+jpeg-turbod.so
+jpeg-turbod.dylib
+jpeg-turbod.dll
+jpeg-turbod.a
+jpeg-turbod.lib
+jpeg-turbod-test-*
+
 # Compiled Object files
 *.o
 *.obj
@@ -22,3 +32,7 @@ docs/
 
 # Code coverage
 *.lst
+
+# JetBrains
+/.idea
+*.iml
