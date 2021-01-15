@@ -1,0 +1,6 @@
+name "jpeg-turbod"
+description "A D wrapper for libjpeg-turbo."
+authors "Kyle Ingraham"
+copyright "Copyright © 2021, Kyle Ingraham"
+license "MIT"
+lflags "-L/usr/local/opt/jpeg-turbo/lib" "-L/opt/libjpeg-turbo/lib" "-lturbojpeg" platform="osx"
