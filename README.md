@@ -10,7 +10,7 @@ Currently working on MacOS. Windows and Linux compatibility pending.
      - MacOS (via official installer): https://libjpeg-turbo.org/Documentation/OfficialBinaries
      
 ## Usage
-First install jpeg-turbod via dub (instructions pending).
+First install via dub: `dub add jpeg-turbod`
 
 Then use in your program like so:
 ```d
