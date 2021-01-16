@@ -1,6 +1,6 @@
 module jpeg_turbod.decompress;
 
-import libjpeg_turbo;
+import jpeg_turbod.libjpeg_turbo;
 
 class Decompressor
 {

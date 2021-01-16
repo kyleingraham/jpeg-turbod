@@ -1,3 +1,3 @@
-module libjpeg_turbo;
+module jpeg_turbod.libjpeg_turbo;
 
-public import libjpeg_turbo.turbojpeg;
+public import jpeg_turbod.libjpeg_turbo.turbojpeg;

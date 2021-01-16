@@ -1,4 +1,4 @@
-module libjpeg_turbo.turbojpeg;
+module jpeg_turbod.libjpeg_turbo.turbojpeg;
 
 import core.stdc.config : c_ulong;
 
