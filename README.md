@@ -8,7 +8,7 @@ Currently working on MacOS. Windows and Linux compatibility pending.
    - Installation:
      - MacOS (via Homebrew): `brew install jpeg-turbo`
      - MacOS (via official installer): https://libjpeg-turbo.org/Documentation/OfficialBinaries
-     
+   
 ## Usage
 First install via dub: `dub add jpeg-turbod`
 
@@ -35,14 +35,15 @@ void main()
 
 ```
 
-During compilation dub will try to find libjpeg-turbo at the following locations:
+During compilation dub will try to find libjpeg-turbo at the following locations (in addition to the default search locations for your linker):
  - On MacOS:
    - Homebrew path: `/usr/local/opt/jpeg-turbo/lib` 
    - Installer path: `/opt/libjpeg-turbo/lib`
-   
+ - On Windows:
+   - Installer paths: `C:\libjpeg-turbo64\lib` & `C:\libjpeg-turbo\lib`
+
 
 ## Todo
- - Windows compatibility
  - Linux compatibility
  - Documentation
  - Access to error information
