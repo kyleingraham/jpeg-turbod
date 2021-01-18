@@ -1,7 +1,7 @@
 # jpeg-turbod
 A D wrapper for libjpeg-turbo.
 
-Currently working on MacOS. Windows and Linux compatibility pending.
+Currently working on MacOS and Windows. Linux compatibility pending.
 
 ## Requirements
  - libjpeg-turbo
