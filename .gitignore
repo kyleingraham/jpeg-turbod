@@ -36,3 +36,6 @@ docs/
 # JetBrains
 /.idea
 *.iml
+
+# Visual Studio
+/.vs
