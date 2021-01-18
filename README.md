@@ -7,7 +7,7 @@ Currently working on MacOS and Windows. Linux compatibility pending.
  - libjpeg-turbo
    - Installation:
      - MacOS (via Homebrew): `brew install jpeg-turbo`
-     - MacOS (via official installer): https://libjpeg-turbo.org/Documentation/OfficialBinaries
+     - MacOS/Windows (via official installer): https://libjpeg-turbo.org/Documentation/OfficialBinaries
    
 ## Usage
 First install via dub: `dub add jpeg-turbod`
