@@ -28,9 +28,9 @@ enum int TJFLAG_ACCURATEDCT = 4096;
 
 tjhandle tjInitCompress();
 
-int tjCompress2(tjhandle handle, const ubyte* srcBuf, int width, int pitch, int height, 
-	int pixelFormat, ubyte** jpegBuf, ulong* jpegSize, int jpegSubsamp, int jpegQual, 
-	int flags);
+int tjCompress2(tjhandle handle, const ubyte* srcBuf, int width, int pitch,
+        int height, int pixelFormat, ubyte** jpegBuf, ulong* jpegSize,
+        int jpegSubsamp, int jpegQual, int flags);
 
 ulong tjBufSize(int width, int height, int jpegSubsamp);
 
@@ -38,5 +38,5 @@ ubyte* tjAlloc(int bytes);
 
 enum TJSAMP
 {
-	TJSAMP_444 = 0
+    TJSAMP_444 = 0
 }

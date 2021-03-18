@@ -31,13 +31,13 @@ void main()
 
     if (decompressed)
     {
-      writefln("JPEG dimensions: %s x %s", width, height);
-      writefln("First pixel: [%s, %s, %s]", pixels[0], pixels[1], pixels[2]);   
+        writefln("JPEG dimensions: %s x %s", width, height);
+        writefln("First pixel: [%s, %s, %s]", pixels[0], pixels[1], pixels[2]);
     }
     else
     {
-      dc.errorInfo.writeln;
-      return;
+        dc.errorInfo.writeln;
+        return;
     }
 
     auto c = new Compressor();
@@ -45,11 +45,11 @@ void main()
     bool compressed = c.compress(pixels, jpegOutput, width, height, 90);
     if (compressed)
     {
-      "image-out.jpg".write(jpegOutput);
+        "image-out.jpg".write(jpegOutput);
     }
     else
     {
-      c.errorInfo.writeln;
+        c.errorInfo.writeln;
     }
 }
 
