@@ -14,23 +14,43 @@ First install via dub: `dub add jpeg-turbod`
 
 Then use in your program like so:
 ```d
-import std.file;
-import std.stdio;
+import std.file : read, write;
+import std.stdio : writefln, writeln;
 
 import jpeg_turbod;
 
 void main()
 {
-    const auto jpegFile = "image.jpg";
-    auto jpeg = cast(ubyte[]) jpegFile.read;
+    const auto jpegFile = "image-in.jpg";
+    auto jpegInput = cast(ubyte[]) jpegFile.read;
 
     auto dc = new Decompressor();
     ubyte[] pixels;
     int width, height;
-    dc.decompress(jpeg, pixels, width, height);
+    bool decompressed = dc.decompress(jpegInput, pixels, width, height);
 
-    writefln("JPEG dimensions: %s x %s", width, height);
-    writefln("First pixel: [%s, %s, %s]", pixels[0], pixels[1], pixels[2]);
+    if (decompressed)
+    {
+        writefln("JPEG dimensions: %s x %s", width, height);
+        writefln("First pixel: [%s, %s, %s]", pixels[0], pixels[1], pixels[2]);
+    }
+    else
+    {
+        dc.errorInfo.writeln;
+        return;
+    }
+
+    auto c = new Compressor();
+    ubyte[] jpegOutput;
+    bool compressed = c.compress(pixels, jpegOutput, width, height, 90);
+    if (compressed)
+    {
+        "image-out.jpg".write(jpegOutput);
+    }
+    else
+    {
+        c.errorInfo.writeln;
+    }
 }
 
 ```
@@ -46,5 +66,6 @@ During compilation dub will try to find libjpeg-turbo at the following locations
 ## Todo
  - Linux compatibility
  - Documentation
- - Access to error information
+ - ~~Compression to JPEG~~
+ - ~~Access to error information~~
  - Output of grayscale/B&W images

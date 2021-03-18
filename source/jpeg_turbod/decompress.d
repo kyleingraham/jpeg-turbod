@@ -6,37 +6,51 @@ class Decompressor
 {
     private
     {
-        tjhandle decompressor_;
-        int width_, height_, jpegSubsamp_, jpegColorspace_;
+        tjhandle decompressor;
+        int width, height, jpegSubsamp, jpegColorspace;
         enum int rgbPixelSize = 3;
     }
 
     this()
     {
-        decompressor_ = tjInitDecompress();
+        decompressor = tjInitDecompress();
     }
 
     ~this()
     {
-        tjDestroy(decompressor_);
+        tjDestroy(decompressor);
     }
 
-    final void decompress(in ubyte[] jpeg, ref ubyte[] pixels, out int width, out int height)
+    final char[] errorInfo()
+    {
+        import std.string : fromStringz;
+
+        return fromStringz(tjGetErrorStr2(decompressor));
+    }
+
+    final bool decompress(in ubyte[] jpeg, ref ubyte[] pixels, out int width, out int height)
     {
         auto jpegLength = cast(int) jpeg.length;
 
-        auto result = tjDecompressHeader3(decompressor_, jpeg.ptr, jpegLength,
-                &width_, &height_, &jpegSubsamp_, &jpegColorspace_);
+        auto result = tjDecompressHeader3(decompressor, jpeg.ptr, jpegLength,
+                &width, &height, &jpegSubsamp, &jpegColorspace);
 
-        width = width_;
-        height = height_;
-
-        if (pixels.length != width_ * height_ * rgbPixelSize)
+        if (result == -1)
         {
-            pixels.length = width_ * height_ * rgbPixelSize;
+            return false;
         }
 
-        result = tjDecompress2(decompressor_, jpeg.ptr, jpegLength, pixels.ptr,
-                width_, 0, height_, TJPF.TJPF_RGB, TJFLAG_ACCURATEDCT);
+        width = width;
+        height = height;
+
+        if (pixels.length != width * height * rgbPixelSize)
+        {
+            pixels.length = width * height * rgbPixelSize;
+        }
+
+        result = tjDecompress2(decompressor, jpeg.ptr, jpegLength, pixels.ptr,
+                width, 0, height, TJPF.TJPF_RGB, TJFLAG_ACCURATEDCT);
+
+        return result == 0;
     }
 }
